@@ -21,3 +21,12 @@ export const chipVariants: ChipVariantsProps = {
   steel: "bg-bg-steel text-txt-steel",
   fairy: "bg-bg-fairy text-txt-fairy",
 };
+
+export const statsVariant = {
+  hp: "bg-txt-chip-grass",
+  attack: "bg-txt-chip-fire",
+  defense: "bg-txt-chip-water",
+  "special-attack": "bg-txt-chip-psychic",
+  "special-defense": "bg-txt-flying",
+  speed: "bg-txt-chip-eletric",
+};

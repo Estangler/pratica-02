@@ -8,7 +8,7 @@ type HeaderProps = {
 };
 
 export default function Header({ filterByType, filterByName }: HeaderProps) {
-  const [active, setActive] = useState<PokemonType | null>(null);
+  const [active, setActive] = useState<PokemonType | null>("todos");
   const [search, setSearch] = useState("");
   const pokemonType: PokemonType[] = [
     "todos",
@@ -46,7 +46,7 @@ export default function Header({ filterByType, filterByName }: HeaderProps) {
 
   return (
     <header className="bg-surface">
-      <div className="flex text-2xl gap-4 px-4 py-6 font-inter border-y border-border-base items-center  shadow-xl/10">
+      <div className="flex text-2xl gap-4 px-4 py-6 font-inter border-y border-border-base items-center shadow-xl/10">
         <div className="text-txt-primary font-bold leading-1.5">
           Poké
           <span className="text-txt-dex">dex</span>
@@ -66,7 +66,7 @@ export default function Header({ filterByType, filterByName }: HeaderProps) {
               {pokemonType.map((type) => (
                 <button
                   key={type}
-                  className={`${chipVariants[type]} border rounded-[20px] py-1 px-2 text-[10px] font-semibold capitalize hover:opacity-85 transition ease duration-100 ${active === `${type}` && `scale-105  outline`}`}
+                  className={`${chipVariants[type]}  rounded-[20px] py-1 px-2 text-[10px] font-semibold capitalize hover:opacity-85 transition ease duration-100 ${active === `${type}` && `scale-105  outline border`}`}
                   onClick={() => handleFilter(type)}
                 >
                   {type}
