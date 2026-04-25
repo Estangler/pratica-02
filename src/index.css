@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bd-bg: #1a1a2e;
+  --color-bg-base: #0f1117;
+  --color-bg-filters: #161926;
+  --color-surface: #1a1d2e;
+  --color-surface-el: #242840;
+
+  --color-border-base: #2a2d3e;
+  --color-border-hover: #3a3d50;
+  --color-txt-dex: #e63946;
+
+  --color-txt-primary: #fff;
+  --color-txt-secondary: #c4cadf;
+  --color-txt-tertiary: #9ba3c4;
+  --color-txt-muted: #6b7294;
+
+  --color-bg-chip-normal: #1e1e18;
+  --color-txt-chip-normal: #a8a878;
+
+  --color-bg-chip-fire: #2d1800;
+  --color-txt-chip-fire: #f08030;
+
+  --color-bg-chip-water: #0a1440;
+  --color-txt-chip-water: #6890f0;
+
+  --color-bg-chip-eletric: #2a2000;
+  --color-txt-chip-eletric: #f8d030;
+
+  --color-bg-chip-grass: #0f2200;
+  --color-txt-chip-grass: #78c850;
+
+  --color-bg-chip-ice: #0a2228;
+  --color-txt-chip-ice: #98d8d8;
+
+  --color-bg-fighting: #200808;
+  --color-txt-fighting: #d05050;
+
+  --color-bg-chip-poison: #1a0a20;
+  --color-txt-chip-poison: #a040a0;
+
+  --color-bg-ground: #2a1f00;
+  --color-txt-ground: #e0c068;
+
+  --color-bg-flying: #1a1030;
+  --color-txt-flying: #a890f0;
+
+  --color-bg-chip-psychic: #200a18;
+  --color-txt-chip-psychic: #f85888;
+
+  --color-bg-bug: #1a1e00;
+  --color-txt-bug: #a8b820;
+
+  --color-bg-rock: #201c08;
+  --color-bg-rock: #b8a038;
+
+  --color-bg-chip-ghost: #1a0a28;
+  --color-txt-chip-ghost: #9878c8;
+
+  --color-bg-dragon: #0a0820;
+  --color-txt-dragon: #9060f8;
+
+  --color-bg-dark: #181010;
+  --color-txt-dark: #907060;
+
+  --color-bg-steel: #1a1a22;
+  --color-txt-steel: #b8b8d0;
+
+  --color-bg-fairy: #200a14;
+  --color-txt-fairy: #ee99ac;
+
+  --font-inter: "Inter";
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* cria a classe manualmente */
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
