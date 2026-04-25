@@ -12,4 +12,12 @@ export const chipVariants: ChipVariantsProps = {
   poison: "bg-bg-chip-poison text-txt-chip-poison",
   flying: "bg-bg-flying text-txt-flying",
   bug: "bg-bg-bug text-txt-bug",
+  fighting: "bg-bg-fighting text-txt-fighting",
+  rock: "bg-bg-rock text-txt-rock",
+  ground: "bg-bg-ground text-txt-ground",
+  ice: "bg-bg-chip-ice text-txt-chip-ice",
+  dragon: "bg-bg-dragon text-txt-dragon",
+  dark: "bg-bg-dark text-txt-dark",
+  steel: "bg-bg-steel text-txt-steel",
+  fairy: "bg-bg-fairy text-txt-fairy",
 };

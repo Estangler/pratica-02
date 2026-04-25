@@ -10,6 +10,7 @@ Modal.setAppElement("#root");
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [filteredList, setFilteredList] = useState<Pokemon[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   // VER DEBOUNCE
 
@@ -38,10 +39,11 @@ export default function App() {
         );
 
         setPokemonList(details);
+        setFilteredList(details);
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     }
 
@@ -53,13 +55,48 @@ export default function App() {
     console.log("cheguei");
   }
 
+  function handleFilterByType(type: string) {
+    if (type === "todos") {
+      setFilteredList(pokemonList);
+      return;
+    }
+    const filtered = pokemonList.filter((pokemon) =>
+      pokemon.types.some((t) => t.type.name === type),
+    );
+
+    setFilteredList(filtered);
+  }
+
+  function handleFilterByName(value: string) {
+    const filtered = pokemonList.filter((pokemon) =>
+      pokemon.name
+        .toLocaleLowerCase()
+        .trim()
+        .includes(value.toLocaleLowerCase().trim()),
+    );
+
+    setFilteredList(filtered);
+  }
+
   return (
     <main>
-      {loading && (
+      {loading ? (
+        "Carregando..."
+      ) : (
         <div>
-          <Header />
-          <div className="py-10 px-15 bg-bg-base">
-            <PokemonCard pokemonList={pokemonList} handleModal={openModal} />
+          <Header
+            filterByType={handleFilterByType}
+            filterByName={handleFilterByName}
+          />
+          <div className="py-10 px-15">
+            {filteredList.length > 0 ? (
+              <PokemonCard pokemonList={filteredList} handleModal={openModal} />
+            ) : (
+              <p className="text-txt-primary text-center pt-30 text-4xl">
+                Nem um pokemon encontrado.
+                <button></button>
+              </p>
+            )}
           </div>
         </div>
       )}

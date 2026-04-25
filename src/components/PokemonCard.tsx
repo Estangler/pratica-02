@@ -18,7 +18,7 @@ export default function PokemonCard({
         return (
           <button
             key={pokemon.id}
-            className="bg-surface border border-border-base rounded-xl pt-3.5 px-3 pb-2.5 flex flex-col items-center justify-center w-full gap-5 hover:translate-y-1 duration-150 ease-out cursor-pointer"
+            className="bg-surface border border-border-base rounded-xl pt-3.5 px-3 pb-2.5 flex flex-col items-center justify-center w-full gap-5 hover:-translate-y-1 duration-150 ease-out cursor-pointer"
             onClick={() => handleModal()}
           >
             <span className="font-mono text-[10px] text-txt-muted">

@@ -58,9 +58,18 @@ export type ChipVariantsProps = {
   flying: string;
   poison: string;
   bug: string;
+  fighting: string;
+  rock: string;
+  ground: string;
+  ice: string;
+  dragon: string;
+  dark: string;
+  steel: string;
+  fairy: string;
 };
 
 export type PokemonType =
+  | "normal"
   | "todos"
   | "fire"
   | "water"
@@ -70,4 +79,12 @@ export type PokemonType =
   | "ghost"
   | "flying"
   | "poison"
-  | "bug";
+  | "bug"
+  | "fighting"
+  | "rock"
+  | "ground"
+  | "ice"
+  | "dragon"
+  | "dark"
+  | "steel"
+  | "fairy";
