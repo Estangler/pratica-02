@@ -9,3 +9,8 @@ export async function getPokemonDetails(url: string) {
   const response = await fetch(url);
   return response.json();
 }
+
+export async function getPokemonSpecie(url: string) {
+  const species = await fetch(url);
+  return species.json();
+}

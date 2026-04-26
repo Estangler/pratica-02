@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { type Pokemon, type PokemonDataList } from "./utils/types";
-import { getPokemonList, getPokemonDetails } from "./services/pokemonService";
+import {
+  getPokemonList,
+  getPokemonDetails,
+  getPokemonSpecie,
+} from "./services/pokemonService";
 import { chipVariants } from "./utils/styles";
 import { MAX_STATS } from "./utils/baseStats";
 import { statsVariant } from "./utils/styles";
@@ -19,6 +23,7 @@ export default function App() {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon[] | null>(
     null,
   );
+  const [captureRate, setCaptureRate] = useState<Pokemon[]>([]);
   const [modalTabs, setModalTabs] = useState("sobre");
 
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +64,15 @@ export default function App() {
     loadPokemons();
   }, []);
 
-  function openModal(id: string) {
+  async function openModal(id: string) {
     setIsOpen(true);
     const pokemon = pokemonList.filter((pokemon) => pokemon.id === id) ?? null;
     setSelectedPokemon(pokemon);
+    console.log(pokemon.map((p) => p.moves));
+
+    const specieData = pokemon.map((p) => p.species.url);
+    const dataSpecie = await getPokemonSpecie(specieData);
+    setCaptureRate(dataSpecie);
   }
 
   function handleFilterByType(type: string) {
@@ -226,9 +236,9 @@ export default function App() {
                     </span>
                   </div>
                   <div className="bg-surface-el text-sm rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
-                    <p>Habilidades</p>
+                    <p>Captura</p>
                     <span className="font-bold text-txt-primary text-[11px]">
-                      {pokemon.species.name}
+                      {captureRate.capture_rate} / 255
                     </span>
                   </div>
                 </div>
