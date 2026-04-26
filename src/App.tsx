@@ -17,6 +17,8 @@ export default function App() {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon[] | null>(
     null,
   );
+  const [modalTabs, setModalTabs] = useState("sobre");
+
   const [isOpen, setIsOpen] = useState(false);
   // VER DEBOUNCE
 
@@ -34,7 +36,7 @@ export default function App() {
               name: data.name,
               height: data.height,
               weight: data.weight,
-              sprites: data.sprites,
+              sprites: data.sprites.other,
               types: data.types,
               abilities: data.abilities,
               stats: data.stats,
@@ -58,9 +60,8 @@ export default function App() {
 
   function openModal(id: string) {
     setIsOpen(true);
-    const pokemon = pokemonList.filter((pokemon) => pokemon.id === id);
+    const pokemon = pokemonList.filter((pokemon) => pokemon.id === id) ?? null;
     setSelectedPokemon(pokemon);
-    console.log(pokemon);
   }
 
   function handleFilterByType(type: string) {
@@ -125,6 +126,26 @@ export default function App() {
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
         className={`p-0 m-0`}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
+            zIndex: 50,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          content: {
+            position: "relative",
+            inset: "auto",
+            padding: 0,
+            border: "none",
+            borderRadius: "16px",
+            background: "transparent",
+            width: "100%",
+            maxWidth: "600px",
+            overflow: "hidden",
+          },
+        }}
       >
         {selectedPokemon?.map((pokemon) => {
           const principalType = pokemon.types[0].type.name;
@@ -145,7 +166,7 @@ export default function App() {
                 <div className="flex gap-2">
                   {pokemon.types.map((types) => (
                     <span
-                      key={principalType}
+                      key={types.type.name}
                       className={`${chipVariants[types.type.name as keyof typeof chipVariants]} border rounded-[20px] py-1 px-2 text-xs font-semibold capitalize`}
                     >
                       {types.type.name}
@@ -154,22 +175,27 @@ export default function App() {
                 </div>
               </header>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mb-5">
                 <div
-                  className={`h-35 w-35 border rounded-full flex items-center justify-center ${chipVariants[principalType as keyof typeof chipVariants]}`}
+                  className={`h-65 w-65 border rounded-full flex items-center justify-center ${chipVariants[principalType as keyof typeof chipVariants]}`}
                 >
                   <img
-                    src={pokemon.sprites.front_default}
+                    src={
+                      pokemon.sprites.other["official-artwork"].front_default
+                    }
                     alt={pokemon.name}
-                    className="animate-float"
+                    className="animate-float h-65 w-65"
                   />
                 </div>
               </div>
 
-              <div className="bg-surface rounded-xl border-t border-t-txt-muted py-10 px-5">
+              <div className="bg-surface rounded-xl border-t border-t-txt-muted py-5 px-5">
                 <div className="w-full flex gap-1">
                   {infoButtons.map((info) => (
-                    <button className="bg-surface-el px-3 py-2 text-sm rounded-sm text-txt-muted font-semibold capitalize">
+                    <button
+                      className={`bg-surface-el px-3 py-2 text-sm rounded-sm text-txt-muted font-semibold capitalize ${modalTabs === info && `bg-txt-dex text-txt-primary`}`}
+                      onClick={() => setModalTabs(info)}
+                    >
                       {info}
                     </button>
                   ))}
@@ -189,8 +215,14 @@ export default function App() {
                   </div>
                   <div className="bg-surface-el text-sm rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
                     <p>Habilidades</p>
-                    <span className="font-bold text-txt-primary">
+                    <span className="font-bold text-txt-primary text-[11px]">
                       {pokemon.abilities[0].ability.name}
+                    </span>
+                  </div>
+                  <div className="bg-surface-el text-sm rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
+                    <p>Habilidades</p>
+                    <span className="font-bold text-txt-primary text-[11px]">
+                      {pokemon.species.name}
                     </span>
                   </div>
                 </div>
@@ -201,14 +233,14 @@ export default function App() {
                     const value = (stats.base_stat / max) * 100;
 
                     return (
-                      <div className="w-full mt-2">
+                      <div className="w-full mt-2" key={stats.stat.name}>
                         <div className="flex justify-between ">
                           <span
                             className={`text-txt-muted text-[12px] ${stats.stat.name === `hp` ? `uppercase` : `capitalize`}`}
                           >
                             {stats.stat.name}
                           </span>
-                          <span className="text-txt-primary capitalize">
+                          <span className="text-txt-primary text-sm">
                             {stats.base_stat}
                           </span>
                         </div>

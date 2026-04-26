@@ -31,7 +31,10 @@ export default function PokemonCard({
             <div
               className={`h-35 w-35 border rounded-full flex items-center justify-center ${chipVariants[principalType as keyof typeof chipVariants]}`}
             >
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <img
+                src={pokemon.sprites.other["official-artwork"].front_default}
+                alt={pokemon.name}
+              />
             </div>
             <span className="text-sm font-semibold text-txt-primary capitalize">
               {pokemon.name}
