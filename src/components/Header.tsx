@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { chipVariants } from "../utils/styles";
 import { type PokemonType } from "../utils/types";
+import LogoSvg from "../assets/logo.svg";
 
 type HeaderProps = {
   filterByType: (type: string) => void;
@@ -47,6 +48,7 @@ export default function Header({ filterByType, filterByName }: HeaderProps) {
   return (
     <header className="bg-surface">
       <div className="flex text-2xl gap-4 px-4 py-6 font-inter border-y border-border-base items-center shadow-xl/10">
+        <img src={LogoSvg} alt="logo" />
         <div className="text-txt-primary font-bold leading-1.5">
           Poké
           <span className="text-txt-dex">dex</span>

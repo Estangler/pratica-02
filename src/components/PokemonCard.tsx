@@ -34,6 +34,7 @@ export default function PokemonCard({
               <img
                 src={pokemon.sprites.other["official-artwork"].front_default}
                 alt={pokemon.name}
+                className="animate-float"
               />
             </div>
             <span className="text-sm font-semibold text-txt-primary capitalize">

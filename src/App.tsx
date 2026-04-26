@@ -4,6 +4,8 @@ import { getPokemonList, getPokemonDetails } from "./services/pokemonService";
 import { chipVariants } from "./utils/styles";
 import { MAX_STATS } from "./utils/baseStats";
 import { statsVariant } from "./utils/styles";
+import LogoSvg from "./assets/logo.svg";
+
 import Modal from "react-modal";
 import Header from "./components/Header";
 import PokemonCard from "./components/PokemonCard";
@@ -20,7 +22,6 @@ export default function App() {
   const [modalTabs, setModalTabs] = useState("sobre");
 
   const [isOpen, setIsOpen] = useState(false);
-  // VER DEBOUNCE
 
   useEffect(() => {
     async function loadPokemons() {
@@ -36,7 +37,7 @@ export default function App() {
               name: data.name,
               height: data.height,
               weight: data.weight,
-              sprites: data.sprites.other,
+              sprites: data.sprites,
               types: data.types,
               abilities: data.abilities,
               stats: data.stats,
@@ -95,7 +96,12 @@ export default function App() {
   return (
     <main>
       {loading ? (
-        "Carregando..."
+        <div className="flex flex-col items-center justify-center h-screen w-full text-center">
+          <h1 className="text-8xl text-txt-primary">
+            CARREGANDO PÁGINA, AGUARDE...
+          </h1>
+          <img src={LogoSvg} alt="logo" className="animate-spin" />
+        </div>
       ) : (
         <div>
           <Header
@@ -204,13 +210,13 @@ export default function App() {
                   <div className="bg-surface-el rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
                     <p>Altura</p>
                     <span className="font-bold text-txt-primary">
-                      {pokemon.height}
+                      {pokemon.height / 10} m
                     </span>
                   </div>
                   <div className="bg-surface-el text-sm rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
                     <p>Peso</p>
                     <span className="font-bold text-txt-primary">
-                      {pokemon.weight}
+                      {pokemon.weight / 10} kg
                     </span>
                   </div>
                   <div className="bg-surface-el text-sm rounded-sm text-txt-muted py-1 px-5 uppercase text-[12px] flex-1">
