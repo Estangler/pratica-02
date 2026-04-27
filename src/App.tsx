@@ -165,7 +165,7 @@ export default function App() {
       >
         {selectedPokemon?.map((pokemon) => {
           const principalType = pokemon.types[0].type.name;
-          const infoButtons = ["sobre", "stats", "evolucão", "moves"];
+          const infoButtons = ["stats"];
 
           return (
             <div
