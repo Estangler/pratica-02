@@ -1,6 +1,5 @@
 export type PokemonDataList = {
-  name: string;
-  url: string;
+  results: Array<{ name: string; url: string }>;
 };
 
 export type Pokemon = {
