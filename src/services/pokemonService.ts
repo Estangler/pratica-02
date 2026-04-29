@@ -16,7 +16,7 @@ async function fetchFromApi<T>(url: string): Promise<T> {
 }
 
 //Função assincrona responsavel por capturar a lista com url e nome dos pokemons, nessa função chamamos a nossa função fetchFromApi passando como parametro a url base da api juntamente com o limite de requisoções que desejamos. Posteriormente esses dados serão guardados em uma variável aonde iremos disponibilizar o consumo (desses dados) para o restante da aplicação. Foi projetada dessa forma para já mostrar um conteudo para o usuário permitindo também que ela possa interagir com a aplicação.
-export async function getPokemonList() {
+export async function getPokemonList(): Promise<PokemonDataList["results"]> {
   try {
     const data = await fetchFromApi<PokemonDataList>(
       `${API_BASE_URL}/pokemon?limit=${POKEMON_LIMIT}`,
