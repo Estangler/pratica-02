@@ -10,7 +10,7 @@ export const chipVariants: ChipVariantsProps = {
   psychic: "bg-bg-chip-psychic text-txt-chip-psychic",
   ghost: "bg-bg-chip-ghost text-txt-chip-ghost",
   poison: "bg-bg-chip-poison text-txt-chip-poison",
-  flying: "bg-bg-flying text-txt-flying",
+  flying: "bg-bg-chip-flying text-txt-flying",
   bug: "bg-bg-bug text-txt-bug",
   fighting: "bg-bg-fighting text-txt-fighting",
   rock: "bg-bg-rock text-txt-rock",

@@ -22,6 +22,7 @@ export default function PokemonCard({
         return (
           <button
             key={pokemon.id}
+            aria-label={`Ver detalhes de ${pokemon.name}`}
             className="bg-surface border border-border-base rounded-xl pt-3.5 px-3 pb-2.5 flex flex-col items-center justify-center w-full gap-5 hover:-translate-y-1 duration-150 ease-out cursor-pointer"
             onClick={() => colectPokemonInfo(pokemon.id)}
           >

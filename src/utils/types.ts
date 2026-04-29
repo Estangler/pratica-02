@@ -51,6 +51,12 @@ export type Pokemon = {
   };
 };
 
+export type PokemonSpecies = {
+  capture_rate: number;
+  name: string;
+  url: string;
+};
+
 export type ChipVariantsProps = {
   todos: string;
   fire: string;

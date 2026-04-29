@@ -58,6 +58,7 @@ export default function Header({ filterByType, filterByName }: HeaderProps) {
           onChange={(e) => handleInputSearch(e.target.value)}
           type="text"
           placeholder="Buscar pokémon..."
+          aria-label="Buscar pokémon"
           className="border border-border-hover outline-none px-4 py-2 rounded-lg bg-surface-el w-5/7 text-base leading-1.5 text-txt-primary font-normal  placeholder:text-txt-muted placeholder:text-[12px] focus:border-txt-dex transition duration-350 ease"
         />
       </div>
@@ -68,6 +69,7 @@ export default function Header({ filterByType, filterByName }: HeaderProps) {
               {pokemonType.map((type) => (
                 <button
                   key={type}
+                  aria-label={`Filtrar por tipo ${type}`}
                   className={`${chipVariants[type]}  rounded-[20px] py-1 px-2 text-[10px] font-semibold capitalize hover:opacity-85 transition ease duration-100 ${active === `${type}` && `scale-105  outline border`}`}
                   onClick={() => handleFilter(type)}
                 >
